@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TaskFlow — Gerencie suas tarefas com elegância." />
+  <title>TaskFlow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+  <!-- ═══════════════ TELA: LOGIN ═══════════════ -->
+  <section id="screen-login" class="screen active w-full max-w-md">
+    <div class="glass-card rounded-2xl p-8">
+
+      <div class="text-center mb-8">
+        <div class="logo-icon mx-auto mb-4">
+          <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+        </div>
+        <h1 class="text-2xl font-bold text-white">TaskFlow</h1>
+        <p class="text-slate-400 text-sm mt-1">Entre para gerenciar suas tarefas</p>
+      </div>
+
+      <div id="login-error" class="alert-error hidden mb-4"></div>
+
+      <form id="form-login" novalidate class="space-y-4">
+        <div>
+          <label class="field-label" for="login-email">E-mail</label>
+          <input id="login-email" type="email" placeholder="seu@email.com" class="field-input" />
+        </div>
+        <div>
+          <label class="field-label" for="login-password">Senha</label>
+          <input id="login-password" type="password" placeholder="••••••••" class="field-input" />
+        </div>
+        <button type="submit" class="btn-primary w-full py-2.5">Entrar</button>
+      </form>
+
+      <p class="text-center text-sm text-slate-500 mt-6">
+        Não tem conta?
+        <button id="go-register" class="text-indigo-400 hover:text-indigo-300 font-medium ml-1 transition-colors">Cadastre-se</button>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TELA: CADASTRO ═══════════════ -->
+  <section id="screen-register" class="screen w-full max-w-md">
+    <div class="glass-card rounded-2xl p-8">
+
+      <div class="text-center mb-8">
+        <div class="logo-icon mx-auto mb-4">
+          <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+          </svg>
+        </div>
+        <h1 class="text-2xl font-bold text-white">Criar Conta</h1>
+        <p class="text-slate-400 text-sm mt-1">Comece a organizar suas tarefas</p>
+      </div>
+
+      <div id="register-error" class="alert-error hidden mb-4"></div>
+      <div id="register-success" class="alert-success hidden mb-4"></div>
+
+      <form id="form-register" novalidate class="space-y-4">
+        <div>
+          <label class="field-label" for="reg-name">Nome</label>
+          <input id="reg-name" type="text" placeholder="Seu nome completo" class="field-input" />
+        </div>
+        <div>
+          <label class="field-label" for="reg-email">E-mail</label>
+          <input id="reg-email" type="email" placeholder="seu@email.com" class="field-input" />
+        </div>
+        <div>
+          <label class="field-label" for="reg-password">Senha</label>
+          <input id="reg-password" type="password" placeholder="Mínimo 6 caracteres" class="field-input" />
+        </div>
+        <button type="submit" class="btn-primary w-full py-2.5">Criar Conta</button>
+      </form>
+
+      <p class="text-center text-sm text-slate-500 mt-6">
+        Já tem conta?
+        <button id="go-login" class="text-indigo-400 hover:text-indigo-300 font-medium ml-1 transition-colors">Fazer login</button>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TELA: APP / DASHBOARD ═══════════════ -->
+  <section id="screen-app" class="screen w-full max-w-3xl flex-col gap-4">
+
+    <!-- Header -->
+    <header class="glass-card rounded-2xl px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="logo-icon">
+          <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs text-slate-500 leading-none">Bem-vindo(a) de volta</p>
+          <p id="user-greeting" class="text-sm font-semibold text-white mt-0.5"></p>
+        </div>
+      </div>
+      <button id="btn-logout" class="btn-ghost px-3 py-1.5 text-xs flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+        </svg>
+        Sair
+      </button>
+    </header>
+
+    <!-- Formulário de nova tarefa -->
+    <div class="glass-card rounded-2xl p-6">
+      <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4 flex items-center gap-2">
+        <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+        </svg>
+        Nova Tarefa
+      </h2>
+
+      <form id="form-todo" novalidate class="space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="sm:col-span-1">
+            <label class="field-label" for="todo-title">Título <span class="text-red-400">*</span></label>
+            <input id="todo-title" type="text" placeholder="Ex: Reunião com o time" class="field-input" />
+          </div>
+          <div class="sm:col-span-1">
+            <label class="field-label" for="todo-type">Tipo</label>
+            <select id="todo-type" class="field-input field-select">
+              <option value="Trabalho">💼 Trabalho</option>
+              <option value="Pessoal">🏠 Pessoal</option>
+              <option value="Estudos">📚 Estudos</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="field-label" for="todo-desc">Descrição <span class="text-slate-600 font-normal">(opcional)</span></label>
+          <textarea id="todo-desc" rows="2" placeholder="Detalhes adicionais..." class="field-input resize-none"></textarea>
+        </div>
+        <div id="todo-error" class="alert-error hidden"></div>
+        <button type="submit" class="btn-primary px-6 py-2.5 text-sm">
+          + Adicionar Tarefa
+        </button>
+      </form>
+    </div>
+
+    <!-- Listagem de tarefas -->
+    <div class="glass-card rounded-2xl p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-2">
+          <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+          </svg>
+          Minhas Tarefas
+        </h2>
+        <span id="tasks-badge" class="badge-count hidden"></span>
+      </div>
+
+      <!-- Filtros rápidos -->
+      <div class="flex gap-1.5 mb-4 flex-wrap">
+        <button data-filter="all" class="filter-btn active">Todas</button>
+        <button data-filter="Trabalho" class="filter-btn">💼 Trabalho</button>
+        <button data-filter="Pessoal" class="filter-btn">🏠 Pessoal</button>
+        <button data-filter="Estudos" class="filter-btn">📚 Estudos</button>
+      </div>
+
+      <ul id="todo-list" class="space-y-3"></ul>
+
+      <div id="empty-state" class="hidden py-12 text-center">
+        <div class="text-5xl mb-3 opacity-30">📋</div>
+        <p class="text-slate-500 text-sm">Nenhuma tarefa cadastrada ainda.</p>
+        <p class="text-slate-600 text-xs mt-1">Use o formulário acima para adicionar sua primeira tarefa.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
